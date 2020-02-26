@@ -1,0 +1,232 @@
+/* ==CSSDrillEmployee============================== */
+.employees {
+    height: 300px;
+    width: 200px;
+    float: left;
+    display: block;
+    margin-top: 5px;
+    text-align:left;
+}
+
+.drill-in-employees {
+    height: 1200px;
+    width: 190px;
+    float: left;
+    display: block;
+    margin-top: 5px;
+}
+
+.employeeProfile {
+    float: right;
+    display: block;
+    margin-top: 20px;
+    margin-right: 20px;
+    text-align: left;
+}
+
+.picture {
+    border-radius: 50%;
+    border: 2px solid #14b2e2;
+    width: 100px;
+    height: 100px;
+}
+
+.text {
+    flex: 1 1 auto;
+    margin-left: 20px;
+}
+
+/* ==CSSEmployeeCard============================== */
+.rounded-avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 4px solid #14b2e2;
+}
+
+.employee-card {
+    display: flex;
+}
+
+h1 {
+    margin-top: 0;
+    line-height: 1.25em;
+}
+
+.avatar-wrapper {
+    padding-right: 20px;
+}
+
+.additional-info {
+    flex: 1 1 auto;
+}
+
+.info-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.info-text {
+    font-size: 1.2rem;
+}
+
+/* ==CSSGlobalFiltersExample============================== */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.layout-wrapper {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+h2 {
+    margin-top: 10px;
+    border-bottom: 2px solid #14b2e2;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(810px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.kpis {
+    margin: -20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.bar-chart-block,
+.pie-chart-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.bar-chart,
+.pie-chart {
+    flex: 1 0 400px;
+    height: 400px;
+}
+
+/* ==CSSKpiMetricBox============================== */
+.kpi-metric {
+    min-width: 200px;
+    text-align: center;
+    border: 2px solid #14b2e2;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.kpi-metric .value {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1em;
+    text-align: center;
+    padding: 5px;
+}
+
+.kpi-metric .title {
+    display: block;
+    margin: 10px 10px -35px 15px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    background-color: #14b2e2;
+    padding: 5px 20px;
+    color: #ffffff;
+}
+
+/* ==CSSSidebarItem============================== */
+li {
+    margin: 0 -20px 0 -10px;
+    position: relative;
+}
+
+button {
+    display: block;
+    text-align: left;
+    width: 100%;
+    background: transparent none;
+    padding: 10px 20px 10px 10px;
+    border: 0;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #dde4eb;
+    color: #6d7680;
+    transition: border-right-color 200ms ease-out, color 200ms ease-out;
+    cursor: pointer;
+}
+
+button:hover {
+    border-right-width: 3px;
+    color: #000000;
+}
+
+button.selected {
+    border-right-color: #14b2e2;
+    border-right-width: 3px;
+    color: #000000;
+}
+
+/* ==CSSGlobalFilters============================== */
+.example-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex: 1 0 auto;
+}
+
+/* ==CSSExampleWithSource============================== */
+.example-with-source {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-top: 30px;
+}
+
+.example {
+    padding: 20px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.source {
+    margin: 20px 0;
+}
+
+:global(pre) {
+    overflow: auto;
+}
+
+/* ==CSSLayout============================== */
+.wrapper {
+    display: grid;
+    grid-template-columns: 200px 0;
+    justify-content: stretch;
+    justify-items: stretch;
+    flex: 1;
+}
+
+.sidebar {
+    padding: 20px 19px 20px 0;
+    border-right: 1px solid #dde4eb;
+}
+
+.content {
+    padding: 20px 0 20px 20px;
+}

@@ -1,0 +1,29 @@
+<h2>My Employees</h2>
+<ul class="sidebar">
+  <li class="list-item-wrap" *ngFor="let employee of employees"
+    [class.selected]="employee === selectedEmployee"
+    (click)="onSelect(employee)">
+    <button class="list-item">{{employee.name}}</button>
+  </li>
+</ul>
+
+<div *ngIf="selectedEmployee">
+
+  <h2>{{selectedEmployee.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedEmployee.id}}</div>
+  <div><span>gender: </span>{{selectedEmployee.gender}}</div>
+  <div><span>avatarUrl: </span>{{selectedEmployee.avatarUrl}}</div>
+  <div><span>startDate: </span>{{selectedEmployee.startDate}}</div>
+  <div><span>jobTitle: </span>{{selectedEmployee.job_title}}</div>
+  <div><span>Uri: </span>{{employeefilter.uri}}</div>
+  <div><span>Urilove: </span>{{validElements.uri}}</div>
+
+
+
+</div>
+<div class="kpi-metric" >
+    <div class=" value" [id]="kpiCheckAmountRootDomID"></div> 
+    <div class="title"><span>Average check amount</span></div>
+        
+</div>
+<div [id]="validElementRootDomID"></div>

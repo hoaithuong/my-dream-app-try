@@ -1,0 +1,31 @@
+
+<div>
+    <!-- <ul>
+        {validElements
+            ? validElements.items.map(item => this.buildSidebarItem(item, selectedEmployeeUri))
+            : null}
+    </ul> -->
+</div>
+<div class="employee-card">
+    <ul>
+        <li class="list-item-wrap">
+            <button>
+                {{label}}
+            </button>
+        </li>
+    </ul>
+    <div class="avatar-wrapper">
+        <img class="rounded-avatar" src={{avatarUrl}} alt={{name}} />
+    </div>
+    <div class="additional-info">
+        <h1>{{name}}</h1>
+        <p>
+            <span class="info-title">Employed since</span>
+            <span class="info-text">{{startDate}}</span>
+        </p>
+        <p>
+            <span class="info-title">Job title</span>
+            <span class="info-text">{{gender}}</span>
+        </p>
+    </div>
+</div>
