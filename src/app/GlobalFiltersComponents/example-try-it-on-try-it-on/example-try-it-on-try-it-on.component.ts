@@ -1,37 +1,24 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Employees } from './employeeInterface';
-import { SDK, IElement } from "@gooddata/gooddata-js";
 import {EMPLOYEES} from './mockEmployees';
 import '@gooddata/react-components/styles/css/main.css';
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 import * as invariant from 'invariant';
+
 import {
-  Table,
   AttributeElements,
   Kpi,
-  BarChart,
-  PieChart,
-  LoadingComponent,
-  ErrorComponent,
-  HeaderPredicateFactory,
-  Model,
-} from "@gooddata/react-components";
+  Model } from "@gooddata/react-components";
+
 import {
   projectId,
   employeeNameIdentifier,
-  averageDailyTotalSales,
-  locationStateDisplayFormIdentifier,
-  locationStateAttributeUri,
-  totalSalesIdentifier,
-  locationNameDisplayFormIdentifier,
-  locationNameAttributeUri,
   averageCheckSizeByServer,
-  employeeNameUri,
-  menuItemNameAttributeDFIdentifier,
-  menuCategoryAttributeDFIdentifier
-} from '../../../fixtures';
+  employeeNameUri } from '../../../fixtures';
+
 let self: any;
+
 interface AttributeElementsProps {
   identifier: any;
   projectId: any;
@@ -44,16 +31,19 @@ interface AttributeElementsProps {
     title: string;
   };
 }
+
 interface KpiCheckAmountProps {
   measure: any;
   projectId: any;
   filters?: any[];
 }
+
 @Component({
   selector: 'app-example-try-it-on-try-it-on',
   templateUrl: './example-try-it-on-try-it-on.component.html',
   styleUrls: ['./example-try-it-on-try-it-on.component.css']
 })
+
 export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   validElements: any;
   selectedEmployeeUri: any;
@@ -66,17 +56,13 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
     uri: "/gdc/md/exveshu0intwbr4nk6ao8ft6vesjiqus/obj/2200/elements?id=6339689",
     title: "Aaron Watson"
   }
-  // constructor() {}
   onSelect(employees: Employees): void{
     self.selectedEmployee = employees;
     console.log(self.getValidElementProps(self.selectedEmployee));
     //self.validElements = self.validElements.items[0].element.uri;
     //self.selectedEmployee = self.validElements.items.find(item => item.element.uri === self.selectedEmployeeUri).element;
-    //this.selectedEmployee = self.employees.i.validElements.item[0].element.uri;
-    //self.selectedEmployee.id = "6339877"
     self.employeefilter = {
       name: employees.name,
-      // uri: self.getValidElementRootDomNode().validElements.items[0].element.uri
       uri: `${employeeNameUri}/elements?id=${self.selectedEmployee.id}`,
     };
     self.selectedEmployee.isLoading = false;
@@ -90,11 +76,9 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
     //return this.validElements.items[1].element.uri;
     //self.validElements.uri = self.employeefilter.uri;
   }
-  constructor() {
-    // self.selectedEmployeeUri= props.i.items[0].element.uri,
-    // self.selectedEmployee = self.selectEmployee.bind(this);
-    // self.setDefaultSelection = this.setDefaultSelection.bind(this);
-  }
+
+  constructor() {}
+
   // componentWillReceiveProps(nextProps) {
   //   if (nextProps.validElements !== self.props.validElements) {
   //       this.setDefaultSelection(nextProps);
@@ -105,16 +89,19 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
   // }
   private validElementRootDomID: string;
   public kpiCheckAmountRootDomID: string;
+
   protected getValidElementRootDomNode() {
     const node = document.getElementById(this.validElementRootDomID);
     invariant(node, `Node validElementRootDomID not found!`);
     return node;
   }
+
   protected getKpiCheckAmountRootDomNode() {
     const node = document.getElementById(this.kpiCheckAmountRootDomID);
     invariant(node, `Node kpiCheckAmountRootDomID not found!`);
     return node;
   }
+
   protected getValidElementProps(employeefilter): AttributeElementsProps {
     return {
       projectId: projectId,
@@ -126,6 +113,7 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
      // element: this.validElements,
     };
   }
+
   protected getKpiCheckAmountProps(employeefilter): KpiCheckAmountProps {
     return {
       projectId: projectId,
@@ -133,39 +121,47 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
       filters: employeefilter,
     };
   }
+
   getFilters = (employeefilter) => {
     const filters = [];
     if (employeefilter) {
-      //filters.push(Model.positiveAttributeFilter(employeeNameIdentifier, [self.getValidElementRootDomNode().validElements.items[0].element.uri]));
+      filters.push(Model.positiveAttributeFilter(employeeNameIdentifier, [self.getValidElementRootDomNode().validElements.items[0].element.uri]));
     }
     return filters;
   };
+
   protected render() {
     this.renderKpiCheckAmount(this.selectedEmployee);
     this.renderAttributeElements(this.selectedEmployee);
   }
+
   public renderAttributeElements(employeefilter) {
-    console.log('hoang');
+    console.log('thuong');
     console.log(employeefilter);
     //ReactDOM.render(React.createElement(AttributeElements, this.getValidElementProps(employeefilter)), this.getValidElementRootDomNode());
-    ReactDOM.render(React.createElement(AttributeElements, this.getValidElementProps(employeefilter)), this.getValidElementRootDomNode());//.validElements.items[0].element.uri;
+    ReactDOM.render(React.createElement(AttributeElements, this.getValidElementProps(employeefilter)), this.getValidElementRootDomNode()).validElements.items[0].element.uri;
   }
   public renderKpiCheckAmount(employeefilter) {
     ReactDOM.render(React.createElement(Kpi, this.getKpiCheckAmountProps(employeefilter)), this.getKpiCheckAmountRootDomNode());
   }
+
   ngOnInit() {
     self = this;
     this.validElementRootDomID = 'validElementRootDomID';
     this.kpiCheckAmountRootDomID = 'kpiCheckAmountRootDomID';
   }
+
   ngOnChanges() {
     this.render();
   }
+
   ngAfterViewInit() {
     this.render();
   }
+
   ngOnDestroy() {
     // Uncomment if Angular 4 issue that ngOnDestroy is called AFTER DOM node removal is resolved
     //ReactDOM.unmountComponentAtNode(this.getRootDomNode())
   }
+
 }
