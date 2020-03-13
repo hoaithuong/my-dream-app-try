@@ -4,8 +4,8 @@ import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 import {  
   projectId, 
-  avgAmount, 
-  avgWon } from "../../../src/fixtures";
+  averageDailyTotalSales, 
+  averageCheckSizeByServer } from "../../../src/fixtures";
 
 import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 import { DonutChart, Model } from '@gooddata/react-components';
@@ -22,8 +22,8 @@ interface ChartProps {
 export class DynamicMeasuresExampleComponent implements OnInit {
 
   measures = [
-    Model.measure(avgAmount).localIdentifier("AverageAmount").format("#,##0"),
-    Model.measure(avgWon).localIdentifier("AverageWon").format("#,##0")
+    Model.measure(averageDailyTotalSales).localIdentifier("AverageAmount").format("#,##0"),
+    Model.measure(averageCheckSizeByServer).localIdentifier("AverageWon").format("#,##0")
   ]
  
   private rootDomID: string;

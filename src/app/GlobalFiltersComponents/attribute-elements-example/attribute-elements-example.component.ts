@@ -36,19 +36,9 @@ interface AttributeElementsProps {
 
 
 export class AttributeElementsExampleComponent implements OnInit {
+  validElements: any[];
 
   options={ limit: 20 }
-  
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//         selectedEmployeeUri: props.i.items[0].element.uri,
-//     };
-
-//     this.selectEmployee = this.selectEmployee.bind(this);
-//     this.setDefaultSelection = this.setDefaultSelection.bind(this);
-// }
  
   private rootDomID: string;
 
@@ -69,13 +59,6 @@ export class AttributeElementsExampleComponent implements OnInit {
       options: this.options
     };
   }
-//   selectEmployee(uri) {
-//     this.setState({
-//         selectedEmployeeUri: uri,
-//     });
-// }
-
-
 
   private isMounted(): boolean {
     return !!this.rootDomID;
@@ -88,8 +71,9 @@ export class AttributeElementsExampleComponent implements OnInit {
 
   public renderAttributeElements() {
     ReactDOM.render(React.createElement(AttributeElements, this.getProps()), this.getRootDomNode());
-    }
+    // ReactDOM.render(React.createElement(AttributeElements, this.getProps()), this.getRootDomNode()).validElements.items.element[0].uri;
 
+    }
 
   ngOnInit() {
     this.rootDomID = uuid.v1();

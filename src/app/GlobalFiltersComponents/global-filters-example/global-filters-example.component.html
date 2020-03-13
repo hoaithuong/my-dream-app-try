@@ -1,0 +1,65 @@
+<div class='example-wrapper'>
+    <div class='example-with-source'>
+        <div class='example'>
+            <div class='layout-wrapper'>
+                <div class='wrapper'>
+                    <div class='sidebar'>
+                        <div>
+                            <ul class='ulsidebar'>
+                                <li class='list-item-wrap' *ngFor='let employee of employees'
+                                  (click)='onSelect(employee)'>
+                                  <button class='list-item'
+                                  [class.selected]='employee === selectedEmployee'
+                                  >{{employee.name}}</button>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                    <div class='content'>
+                        <div class='details'>
+                            <h2>Employee overview</h2>
+                            <div>
+                                <div class='employee-card'>
+                                    <div class='avatar-wrapper'>
+                                        <img class='picture rounded-avatar' src={{selectedEmployee.avatarUrl}} alt='' />
+                                    </div>
+                                    <div class='additional-info'>
+                                        <h1>{{selectedEmployee.name}}</h1>
+                                        <p>
+                                            <b><span className='info-title'>Employed since  </span></b>
+                                            <span className='info-text'>{{selectedEmployee.startDate}}</span>
+                                        </p>
+                                        <p>
+                                            <b><span className='info-title'>Job title  </span></b>
+                                            <span className='info-text'>{{selectedEmployee.job_title}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class='kpis'>
+                                    <div class='kpi-metric' >
+                                        <div class=' value' [id]='kpiDailySalesRootDomID'></div> 
+                                        <div class='title'><span>Daily sales</span></div>
+                                        
+                                    </div>
+                                    <div class='kpi-metric' >
+                                        <div class=' value' [id]='kpiCheckAmountRootDomID'></div> 
+                                        <div class='title'><span>Average check amount</span></div>
+                                            
+                                    </div>
+                                </div>
+                                <div class='pie-chart-block'>
+                                    <h2>Average daily total sales by menu item</h2>
+                                    <div class='pie-chart' [id]='pieRoomDataID'></div>
+                                </div>
+                                <div class='bar-chart-block'>
+                                    <h2>Average daily total sales by menu category</h2>
+                                    <div class='bar-chart' [id]='barRoomDataID'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

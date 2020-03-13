@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +26,6 @@ import { KpipositiveattributefilterComponent } from './kpipositiveattributefilte
 import { PivottableComponent } from './pivottable/pivottable.component';
 import { DynamicMeasuresExampleComponent } from './dynamic-measures-example/dynamic-measures-example.component';
 import { DrillEmployeeKpiChartComponent } from './GlobalFiltersComponents/drill-employee-kpi-chart/drill-employee-kpi-chart.component';
-import { KpiMetricBoxComponent } from './GlobalFiltersComponents/kpi-metric-box/kpi-metric-box.component';
 import { GlobalFiltersComponent } from './global-filters/global-filters.component';
 import { KpiDailySaleComponent } from './GlobalFiltersComponents/kpi-daily-sale/kpi-daily-sale.component';
 import { KpiCheckAmountComponent } from './GlobalFiltersComponents/kpi-check-amount/kpi-check-amount.component';
@@ -32,10 +33,16 @@ import { PiechartDailySalebyMenuItemComponent } from './GlobalFiltersComponents/
 import { BarchartDailySalebyMenuItemComponent } from './GlobalFiltersComponents/barchart-daily-saleby-menu-item/barchart-daily-saleby-menu-item.component';
 import { AttributeFiltersComponent } from './GlobalFiltersComponents/attribute-filters/attribute-filters.component';
 import { AttributeElementsExampleComponent } from './GlobalFiltersComponents/attribute-elements-example/attribute-elements-example.component';
-import { SidebarItemComponent } from './GlobalFiltersComponents/sidebar-item/sidebar-item.component';
 import { ExampleTryItOnTryItOnComponent } from './GlobalFiltersComponents/example-try-it-on-try-it-on/example-try-it-on-try-it-on.component';
-
-
+import { ParentFilterExampleComponent } from './ParentFilterComponents/parent-filter-example/parent-filter-example.component';
+import { BarchartForParentComponent } from './ParentFilterComponents/barchart-for-parent/barchart-for-parent.component';
+import { BarchartForParentExampleComponent } from './ParentFilterComponents/barchart-for-parent-example/barchart-for-parent-example.component';
+import { FilterOfFilterComponent } from './ParentFilterComponents/filter-of-filter/filter-of-filter.component';
+import { GlobalFiltersExampleComponent } from './GlobalFiltersComponents/global-filters-example/global-filters-example.component';
+import { AfmBarchartComponent } from './afm-barchart/afm-barchart.component';
+import { FilterDropdownValuesComponent } from './ParentFilterComponents/filter-dropdown-values/filter-dropdown-values.component';
+import { ParentFilterUseSelectComponent } from './ParentFilterComponents/parent-filter-use-select/parent-filter-use-select.component';
+import { TryWithSelectComponent } from './ParentFilterComponents/try-with-select/try-with-select.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +68,6 @@ import { ExampleTryItOnTryItOnComponent } from './GlobalFiltersComponents/exampl
     PivottableComponent,
     DynamicMeasuresExampleComponent,
     DrillEmployeeKpiChartComponent,
-    KpiMetricBoxComponent,
     GlobalFiltersComponent,
     KpiDailySaleComponent,
     KpiCheckAmountComponent,
@@ -69,12 +75,22 @@ import { ExampleTryItOnTryItOnComponent } from './GlobalFiltersComponents/exampl
     BarchartDailySalebyMenuItemComponent,
     AttributeFiltersComponent,
     AttributeElementsExampleComponent,
-    SidebarItemComponent,
-    ExampleTryItOnTryItOnComponent
+    ExampleTryItOnTryItOnComponent,
+    ParentFilterExampleComponent,
+    BarchartForParentComponent,
+    BarchartForParentExampleComponent,
+    FilterOfFilterComponent,
+    GlobalFiltersExampleComponent,
+    AfmBarchartComponent,
+    FilterDropdownValuesComponent,
+    ParentFilterUseSelectComponent,
+    TryWithSelectComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -59,8 +59,8 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
   onSelect(employees: Employees): void{
     self.selectedEmployee = employees;
     console.log(self.getValidElementProps(self.selectedEmployee));
-    //self.validElements = self.validElements.items[0].element.uri;
-    //self.selectedEmployee = self.validElements.items.find(item => item.element.uri === self.selectedEmployeeUri).element;
+    // self.validElements = self.validElements.items[0].element.uri;
+    self.selectedEmployee = self.validElements.items.find(item => self.item.element[0].uri === self.selectedEmployeeUri).element;
     self.employeefilter = {
       name: employees.name,
       uri: `${employeeNameUri}/elements?id=${self.selectedEmployee.id}`,
@@ -125,7 +125,7 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
   getFilters = (employeefilter) => {
     const filters = [];
     if (employeefilter) {
-      filters.push(Model.positiveAttributeFilter(employeeNameIdentifier, [self.getValidElementRootDomNode().validElements.items[0].element.uri]));
+      filters.push(Model.positiveAttributeFilter(employeeNameIdentifier, [self.getValidElementRootDomNode().validElements.items.element[0].uri]));
     }
     return filters;
   };
@@ -138,8 +138,8 @@ export class ExampleTryItOnTryItOnComponent implements OnInit, OnDestroy, OnChan
   public renderAttributeElements(employeefilter) {
     console.log('thuong');
     console.log(employeefilter);
-    //ReactDOM.render(React.createElement(AttributeElements, this.getValidElementProps(employeefilter)), this.getValidElementRootDomNode());
-    ReactDOM.render(React.createElement(AttributeElements, this.getValidElementProps(employeefilter)), this.getValidElementRootDomNode()).validElements.items[0].element.uri;
+    ReactDOM.render(React.createElement(AttributeElements, this.getValidElementProps(employeefilter)), this.getValidElementRootDomNode());
+    //ReactDOM.render(React.createElement(AttributeElements, this.getValidElementProps(employeefilter)), this.getValidElementRootDomNode()).validElements.items[0].element.uri;
   }
   public renderKpiCheckAmount(employeefilter) {
     ReactDOM.render(React.createElement(Kpi, this.getKpiCheckAmountProps(employeefilter)), this.getKpiCheckAmountRootDomNode());

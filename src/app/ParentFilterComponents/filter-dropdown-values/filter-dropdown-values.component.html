@@ -1,0 +1,36 @@
+<table style="margin: 10px;">
+    <tr>
+        <th style="padding-right: 20px; width: auto;">
+            <ng-multiselect-dropdown-angular7
+            [placeholder]="'all states'"
+            [data]="stateDropdownList"
+            [(ngModel)]="stateSelectedItems"
+            [settings]="stateDropdownSettings"
+            (onSelect)="onItemSelectState($event)"
+            (onSelectAll)="onSelectAllState($event)"
+            (onDeSelect)="onDeSelectState($event)"
+            (onDeSelectAll)="onDeSelectAllState($event)"
+            ></ng-multiselect-dropdown-angular7>
+        </th>
+        <th style="padding-left: 20px; width: auto;">
+            <ng-multiselect-dropdown-angular7
+            [placeholder]="'all cities'"
+            [data]="cityDropdownList"
+            [(ngModel)]="citySelectedItems"
+            [settings]="cityDropdownSettings"
+            (onSelect)="onItemSelectCity($event)"
+            (onSelectAll)="onSelectAllCity($event)"
+            (onDeSelect)="onDeSelectCity($event)"
+            (onDeSelectAll)="onDeSelectAllCity($event)"
+            ></ng-multiselect-dropdown-angular7>
+        </th>
+    </tr>
+    <tr>
+        <td style="width: 200px;"></td>
+        <td style="width: 200px;"></td>
+    </tr>
+</table>
+
+<hr className="separator"/>
+<!-- <span [id]="test"></span> -->
+<div class="attribute-filter" style="height:500px" [id]="ChartrootDomID"></div>
