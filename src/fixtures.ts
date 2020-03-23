@@ -1,4 +1,4 @@
-export const projectId = "exveshu0intwbr4nk6ao8ft6vesjiqus";
+export const projectId = "ht3owbpk6h0yfjtkcsgva3osu3z7paol";
 export const avgAmount = "aoJqpe5Ib4mO";
 export const avgWon = "agEEuYDOefRs";
 export const productName = "label.product.id.name";
@@ -6,7 +6,7 @@ export const department = "label.owner.department";
 export const dateClosed = "closed.dataset.dt";
 export const DepartmentDirectSales = `/gdc/md/${projectId}/obj/1026/elements?id=1226`;
 
-//export const backendUrlForInfo = backendUrl;
+export const backendUrlForInfo = projectId;
 //export const projectId = demoProjectId;
 
 // export const averageCheckSizeByServer = "afewRzGAersh";

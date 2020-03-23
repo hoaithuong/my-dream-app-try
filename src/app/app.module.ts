@@ -43,6 +43,15 @@ import { AfmBarchartComponent } from './afm-barchart/afm-barchart.component';
 import { FilterDropdownValuesComponent } from './ParentFilterComponents/filter-dropdown-values/filter-dropdown-values.component';
 import { ParentFilterUseSelectComponent } from './ParentFilterComponents/parent-filter-use-select/parent-filter-use-select.component';
 import { TryWithSelectComponent } from './ParentFilterComponents/try-with-select/try-with-select.component';
+import { ResponsiveChartComponent } from './responsive-chart/responsive-chart.component';
+import { ExampleWithExportComponent } from './utils/example-with-export/example-with-export.component';
+import { ExampleWithSourceComponent } from './utils/example-with-source/example-with-source.component';
+import { BarChartExportExampleComponent } from './ExportExample/bar-chart-export-example/bar-chart-export-example.component';
+import { MeasureValueFiltersExampleComponent } from './measure-value-filters-example/measure-value-filters-example.component';
+import { TableExportExampleComponent } from './ExportExample/table-export-example/table-export-example.component';
+import { PivotTableExportExampleComponent } from './ExportExample/pivot-table-export-example/pivot-table-export-example.component';
+import { HeadlineExportExampleComponent } from './ExportExample/headline-export-example/headline-export-example.component';
+import { VisualizationColumnChartExportExampleComponent } from './ExportExample/visualization-column-chart-export-example/visualization-column-chart-export-example.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +93,16 @@ import { TryWithSelectComponent } from './ParentFilterComponents/try-with-select
     AfmBarchartComponent,
     FilterDropdownValuesComponent,
     ParentFilterUseSelectComponent,
-    TryWithSelectComponent
+    TryWithSelectComponent,
+    ResponsiveChartComponent,
+    ExampleWithExportComponent,
+    ExampleWithSourceComponent,
+    BarChartExportExampleComponent,
+    MeasureValueFiltersExampleComponent,
+    TableExportExampleComponent,
+    PivotTableExportExampleComponent,
+    HeadlineExportExampleComponent,
+    VisualizationColumnChartExportExampleComponent
   ],
   imports: [
     FormsModule,

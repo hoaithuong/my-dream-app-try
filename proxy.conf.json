@@ -7,9 +7,9 @@
     "changeOrigin": true,
     "cookieDomainRewrite": "localhost",
     "secure": false,
-    "target": "https://staging2.intgdc.com",
+    "target": "https://staging3.intgdc.com",
     "headers": {
-      "host": "staging2.intgdc.com",
+      "host": "staging3.intgdc.com",
       "origin": null
     }
   }

@@ -1,0 +1,5 @@
+:hr.separator {
+    border: 1px solid #eee;
+    border-width: 1px 0 0 0;
+    margin: 20px 0;
+}

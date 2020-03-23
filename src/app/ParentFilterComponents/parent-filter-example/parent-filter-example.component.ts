@@ -54,14 +54,24 @@ export class ParentFilterExampleComponent implements OnInit {
   cityFilterValues = [];
 
   onStateChange = stateFilterValues => {
-    self.stateFilterValues= stateFilterValues;
+    if (stateFilterValues == null) {
+      self.stateFilterValues = [];
+    } else {
+      self.stateFilterValues= stateFilterValues;
+    }
     self.render();
   }
     
   
 
   onCityChange = cityFilterValues => {
-    self.cityFilterValues = cityFilterValues
+    if (cityFilterValues == null) {
+      self.cityFilterValues = [];
+
+    } else {
+      self.cityFilterValues = cityFilterValues;
+
+    }
     self.render();
   }
 
