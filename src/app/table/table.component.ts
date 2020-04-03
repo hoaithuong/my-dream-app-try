@@ -4,9 +4,10 @@ import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 import {  
   projectId, 
-  avgAmount, 
-  avgWon, 
-  productName } from "../../../src/fixtures";
+  totalSalesIdentifier, 
+  locationNameAttributeUri, 
+  productName,
+  dateDataSetUri } from "../../../src/fixtures";
 
 import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 import { Table, Model } from '@gooddata/react-components';
@@ -15,8 +16,9 @@ interface ChartProps {
   measures: any[];
   projectId: any;
   attributes: any[];
-  sortBy: any[];
+  sortBy?: any[];
   totals: any[];
+  filters?: any[];
 }
 
 @Component({
@@ -26,11 +28,10 @@ interface ChartProps {
 
 export class TableComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   measures = [
-    Model.measure(avgAmount).localIdentifier("AverageAmount").format("#,##0"),
-    Model.measure(avgWon).localIdentifier("AverageWon").format("#,##0")
+    Model.measure(totalSalesIdentifier).localIdentifier("AverageAmount").format("#,##0")
   ];
   attributes = [
-    Model.attribute(productName).localIdentifier("ProductName")
+    Model.attribute(locationNameAttributeUri).localIdentifier("ProductName")
   ];
   sortBy = [
     Model.measureSortItem("AverageAmount","desc")
@@ -47,6 +48,18 @@ export class TableComponent implements OnInit, OnDestroy, OnChanges, AfterViewIn
     type: "avg"
     
   }]
+  filters = [
+    {
+      relativeDateFilter: {
+        dataSet: {
+            identifier: dateDataSetUri
+        },
+        granularity: 'GDC.time.year',
+        from: -3, 
+        to: -2  
+      }
+    }
+];
  
   private rootDomID: string;
 
@@ -61,8 +74,9 @@ export class TableComponent implements OnInit, OnDestroy, OnChanges, AfterViewIn
       projectId: projectId,
       measures: this.measures,
       attributes: this.attributes,
-      sortBy: this.sortBy,
-      totals: this.totals
+      filters: this.filters,
+      // sortBy: this.sortBy,
+      totals: this.totals,
     };
   }
 

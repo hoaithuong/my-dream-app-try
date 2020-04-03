@@ -1,34 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import ExportDialog from "@gooddata/goodstrap/lib/Dialog/ExportDialog";
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as invariant from 'invariant';
+import ExportDialog from "@gooddata/goodstrap/lib/Dialog/ExportDialog";
 import get from "lodash/get";
+import { Component, OnInit, Injectable } from '@angular/core';
+import { IExportConfig, IExportResponse } from "@gooddata/gooddata-js";
 import { backendUrlForInfo } from "../../../fixtures";
 
 const DOWNLOADER_ID = "downloader";
 
 let self: any;
 
+export type IExportFunction = (exportConfig: IExtendedExportConfig) => Promise<IExportResponse>;
+export type OnExportReady = (exportFunction: IExportFunction) => void;
+export interface IExtendedExportConfig extends IExportConfig {
+  includeFilterContext?: boolean;
+}
+
 @Component({
   selector: 'app-example-with-export',
-  templateUrl: './example-with-export.component.html',
-  styleUrls: ['./example-with-export.component.css']
+  template: '<div [id]="rootDomIDExport"></div>'
 })
 
-export class ExampleWithExportComponent extends React.Component implements OnInit {
-  constructor(props) {
-    super(props);
+@Injectable({
+  providedIn: 'root'
+})
 
-    this.doExport = this.doExport.bind(this);
-  }
+export class ExampleWithExportComponent implements OnInit {
+  exportResult: IExportFunction;
+  
+  private rootDomIDExport: string;
+
+  protected getRootDomNode() {
+    const node = document.getElementById(this.rootDomIDExport);
+    invariant(node, `Node '${this.rootDomIDExport} not found!`);
+    return node;
+  };
 
   state = {
     showExportDialog: false,
     errorMessage: null,
-  };
+  }
 
-  onExportReady = function onExportReady(exportResult) {  
+  onExportReady = function onExportReady(exportResult: IExportFunction) {
     self.exportResult = exportResult;
-  };
+  }
 
   getExportDialog = function getExportDialog() {
     return React.createElement(ExportDialog, {
@@ -47,67 +63,63 @@ export class ExampleWithExportComponent extends React.Component implements OnIni
   }
 
   downloadFile = function downloadFile(uri) {
-  
-    var anchor = document.getElementById(DOWNLOADER_ID);
-  
+    let anchor = document.getElementById(DOWNLOADER_ID) as HTMLAnchorElement;
     if (!anchor) {
       anchor = document.createElement("a");
       anchor.id = DOWNLOADER_ID;
       document.body.appendChild(anchor);
     }
-    
-    self.anchor.href = backendUrlForInfo + uri;
-    self.anchor.download = uri;
+    anchor.href = backendUrlForInfo + uri;
+    anchor.download = uri;
     anchor.click();
   }
 
   exportDialogCancel = () => {
-    ({ showExportDialog: false });
-  };
+    this.state.showExportDialog = false;
+    this.render();
+  }
 
   exportToCSV = () => {
     this.doExport({});
-  };
+  }
 
   exportToXLSX = () => {
     this.doExport({ format: "xlsx" });
-  };
+  }
 
   exportWithCustomName = () => {
     this.doExport({ title: "CustomName" });
-  };
+  }
 
   exportWithDialog = () => {
-    ({ showExportDialog: true });
-  };
+    this.state.showExportDialog = true;
+    this.render();
+  }
 
   exportDialogSubmit = data => {
     const { mergeHeaders, includeFilterContext } = data;
-
-    ({ showExportDialog: false });
-
+    this.state.showExportDialog = false;
     const exportConfig = { format: "xlsx", title: "CustomName", includeFilterContext, mergeHeaders };
-
     this.doExport(exportConfig);
-  };
+    this.render();
+  }
 
   async doExport(exportConfig) {
     try {
-        const result = await self.exportResult(exportConfig);
-        ({ errorMessage: null });
-        this.downloadFile(result.uri);
+      const result = await self.exportResult(exportConfig);
+      ({ errorMessage: null });
+      this.downloadFile(result.uri);
     } catch (error) {
-        let errorMessage = error.message;
-        if (error.responseBody) {
-            errorMessage = get(JSON.parse(error.responseBody), "error.message");
-        }
-        ({ errorMessage });
+      let errorMessage = error.message;
+      if (error.responseBody) {
+        errorMessage = get(JSON.parse(error.responseBody), "error.message");
+      }
+      ({ errorMessage });
     }
   }
 
-  render() {
+  protected render() {
     const { errorMessage, showExportDialog } = this.state;
-
     var errorComponent;
 
     if (errorMessage) {
@@ -124,20 +136,18 @@ export class ExampleWithExportComponent extends React.Component implements OnIni
     }
 
     var exportDialog;
-
     if (showExportDialog) {
       exportDialog = this.getExportDialog();
     }
 
-    return(
+    ReactDOM.render(
       React.createElement(
         "div",
         {
           style: {
-            height: 367
+            height: 50
           }
         },
-        self.children(this.onExportReady),
         React.createElement(
           "div",
           {
@@ -180,12 +190,19 @@ export class ExampleWithExportComponent extends React.Component implements OnIni
         ),
         errorComponent,
         exportDialog
-      )
-    );
+      ), this.getRootDomNode());
   }
 
   ngOnInit() {
     self = this;
+    this.rootDomIDExport = 'rootDomIDExport';
   }
 
+  ngOnChanges() {
+    this.render();
+  }
+
+  ngAfterViewInit() {
+    this.render();
+  }
 }

@@ -52,6 +52,9 @@ import { TableExportExampleComponent } from './ExportExample/table-export-exampl
 import { PivotTableExportExampleComponent } from './ExportExample/pivot-table-export-example/pivot-table-export-example.component';
 import { HeadlineExportExampleComponent } from './ExportExample/headline-export-example/headline-export-example.component';
 import { VisualizationColumnChartExportExampleComponent } from './ExportExample/visualization-column-chart-export-example/visualization-column-chart-export-example.component';
+import { ThgtestComponent } from './utils/thgtest/thgtest.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { BarChartWithSourceComponent } from './SourceExamples/bar-chart-with-source/bar-chart-with-source.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +105,10 @@ import { VisualizationColumnChartExportExampleComponent } from './ExportExample/
     TableExportExampleComponent,
     PivotTableExportExampleComponent,
     HeadlineExportExampleComponent,
-    VisualizationColumnChartExportExampleComponent
+    VisualizationColumnChartExportExampleComponent,
+    ThgtestComponent,
+    DatePickerComponent,
+    BarChartWithSourceComponent
   ],
   imports: [
     FormsModule,

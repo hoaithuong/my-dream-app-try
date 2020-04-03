@@ -3,12 +3,13 @@ import * as ReactDOM from 'react-dom';
 import * as invariant from 'invariant';
 import { BarChart, Model } from '@gooddata/react-components';
 import { Component, OnInit } from '@angular/core';
-import { ExampleWithExportComponent } from '../../utils/example-with-export/example-with-export.component';
 import {
   projectId,
   totalSalesIdentifier,
   locationResortIdentifier,
-  dateDataSetUri } from "../../../fixtures";
+  dateDataSetUri
+} from "../../../fixtures";
+import { ExampleWithExportComponent } from '../example-with-export/example-with-export.component';
 
 interface ChartProps {
   measures: any[];
@@ -21,11 +22,11 @@ interface ChartProps {
 }
 
 @Component({
-  selector: 'app-bar-chart-export-example',
-  template: `<div style ="height: 500px"><div style ="height: 400px" [id]="rootDomID"></div><app-example-with-export></app-example-with-export></div>`
+  selector: 'app-thgtest',
+  template: `<div style ="height: 500px"><app-example-with-export></app-example-with-export><div [id]="rootDomID"></div></div>`
 })
 
-export class BarChartExportExampleComponent implements OnInit {
+export class ThgtestComponent implements OnInit {
   constructor(private ExportComponent: ExampleWithExportComponent) { }
 
   amount = [Model.measure(totalSalesIdentifier)
@@ -42,16 +43,6 @@ export class BarChartExportExampleComponent implements OnInit {
     return node;
   }
 
-  onLoadingChanged(...params) {
-    // eslint-disable-next-line no-console
-    console.info("TableExportExample onLoadingChanged", ...params);
-  }
-
-  onError(...params) {
-    // eslint-disable-next-line no-console
-    console.info("TableExportExample onLoadingChanged", ...params);
-  }
-
   protected getProps(): ChartProps {
     return {
       projectId: projectId,
@@ -59,12 +50,11 @@ export class BarChartExportExampleComponent implements OnInit {
       viewBy: this.locationResort,
       filters: this.filters,
       onExportReady: this.ExportComponent.onExportReady,
-      onLoadingChanged: this.onLoadingChanged,
-      onError: this.onError
     };
   }
 
   protected render() {
+
     ReactDOM.render(
       React.createElement(BarChart, this.getProps()), this.getRootDomNode());
   }
@@ -79,5 +69,6 @@ export class BarChartExportExampleComponent implements OnInit {
 
   ngAfterViewInit() {
     this.render();
-  }  
+  }
+  
 }

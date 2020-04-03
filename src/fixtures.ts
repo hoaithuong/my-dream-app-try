@@ -6,7 +6,7 @@ export const department = "label.owner.department";
 export const dateClosed = "closed.dataset.dt";
 export const DepartmentDirectSales = `/gdc/md/${projectId}/obj/1026/elements?id=1226`;
 
-export const backendUrlForInfo = projectId;
+export const backendUrlForInfo = 'https://staging3.intgdc.com/';
 //export const projectId = demoProjectId;
 
 // export const averageCheckSizeByServer = "afewRzGAersh";

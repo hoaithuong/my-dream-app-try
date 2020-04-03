@@ -27,11 +27,11 @@ export class AfmBarchartComponent implements OnInit, OnDestroy, OnChanges, After
   afm = {
     measures: [
         {
-            localIdentifier: 'averageDailyTotalSales',
+            localIdentifier: 'averageThgCost',
             definition: {
                 measure: {
                     item: {
-                        identifier: averageDailyTotalSales
+                        identifier: 'aaBXWyxBiESC'
                     }
                 }
             },

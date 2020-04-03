@@ -1,29 +1,32 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as uuid from 'uuid';
 import * as invariant from 'invariant';
+import { Component, OnInit } from '@angular/core';
+import { Headline, Model } from '@gooddata/react-components';
+import { ExampleWithExportComponent } from '../../utils/example-with-export/example-with-export.component';
 import {  
   projectId, 
   dateDataSetUri,
   franchiseFeesIdentifier,
   franchiseFeesAdRoyaltyIdentifier } from "../../../fixtures";
 
-import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
-import { Headline, Model } from '@gooddata/react-components';
-
 interface ChartProps {
   primaryMeasure: any;
   secondaryMeasure: any;
   filters: any[];
   projectId: any;
+  onExportReady?: any;
+  onLoadingChanged?: any;
+  onError?: any;
 }
 
 @Component({
   selector: 'app-headline-export-example',
-  templateUrl: './headline-export-example.component.html',
-  styleUrls: ['./headline-export-example.component.css']
+  template: `<div style ="height: 500px"><div style ="height: 400px" [id]="rootDomID"></div><app-example-with-export></app-example-with-export></div>`
 })
+
 export class HeadlineExportExampleComponent implements OnInit {
+  constructor(private ExportComponent: ExampleWithExportComponent) { }
 
   primaryMeasure = Model.measure(franchiseFeesIdentifier).format("#,##0");
   secondaryMeasure = Model.measure(franchiseFeesAdRoyaltyIdentifier).format("#,##0");
@@ -37,28 +40,35 @@ export class HeadlineExportExampleComponent implements OnInit {
     return node;
   }
 
+  onLoadingChanged(...params) {
+    // eslint-disable-next-line no-console
+    console.info("TableExportExample onLoadingChanged", ...params);
+  }
+
+  onError(...params) {
+    // eslint-disable-next-line no-console
+    console.info("TableExportExample onLoadingChanged", ...params);
+  }
+
   protected getProps(): ChartProps {
     return {
       projectId: projectId,
       primaryMeasure: this.primaryMeasure,
       secondaryMeasure: this.secondaryMeasure,
-      filters: this.filters
+      filters: this.filters,
+      onExportReady: this.ExportComponent.onExportReady,
+      onLoadingChanged: this.onLoadingChanged,
+      onError: this.onError
     };
   }
 
-  private isMounted(): boolean {
-    return !!this.rootDomID;
-  }
-
   protected render() {
-    if (this.isMounted()) {
-      ReactDOM.render(React.createElement(Headline, this.getProps()), this.getRootDomNode());
-    }
-
+    ReactDOM.render(
+      React.createElement(Headline, this.getProps()), this.getRootDomNode());
   }
 
   ngOnInit() {
-    this.rootDomID = uuid.v1();
+    this.rootDomID = 'rootDomID';
   }
 
   ngOnChanges() {
@@ -68,10 +78,4 @@ export class HeadlineExportExampleComponent implements OnInit {
   ngAfterViewInit() {
     this.render();
   }
-
-  ngOnDestroy() {
-    // Uncomment if Angular 4 issue that ngOnDestroy is called AFTER DOM node removal is resolved
-    // ReactDOM.unmountComponentAtNode(this.getRootDomNode())
-  }
 }
-

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as uuid from 'uuid';
 import * as invariant from 'invariant';
+import { Component, OnInit } from '@angular/core';
+import { PivotTable, Model } from '@gooddata/react-components';
+import { ExampleWithExportComponent } from '../../utils/example-with-export/example-with-export.component';
 import {  
   projectId, 
   franchiseFeesIdentifier, 
@@ -15,9 +17,6 @@ import {
   monthDateIdentifier,
   dateDataSetUri } from "../../../fixtures";
 
-import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
-import { PivotTable, Model } from '@gooddata/react-components';
-
 interface ChartProps {
   measures: any[];
   rows: any[];
@@ -26,14 +25,18 @@ interface ChartProps {
   sortBy: any[];
   filters: any[];
   pageSize: any;
+  onExportReady?: any;
+  onLoadingChanged?: any;
+  onError?: any;
 }
 
 @Component({
   selector: 'app-pivot-table-export-example',
-  templateUrl: './pivot-table-export-example.component.html',
-  styleUrls: ['./pivot-table-export-example.component.css']
+  template: `<div style ="height: 500px"><div style ="height: 400px" [id]="rootDomID"></div><app-example-with-export></app-example-with-export></div>`
 })
+
 export class PivotTableExportExampleComponent implements OnInit {
+  constructor(private ExportComponent: ExampleWithExportComponent) { }
 
   measures = [
     Model.measure(franchiseFeesIdentifier).format("#,##0"),
@@ -41,7 +44,6 @@ export class PivotTableExportExampleComponent implements OnInit {
     Model.measure(franchiseFeesInitialFranchiseFeeIdentifier).format("#,##0"),
     Model.measure(franchiseFeesIdentifierOngoingRoyalty).format("#,##0"),
   ];
-
   attributes = [
     Model.attribute(locationStateDisplayFormIdentifier),
     Model.attribute(locationNameDisplayFormIdentifier),
@@ -60,6 +62,16 @@ export class PivotTableExportExampleComponent implements OnInit {
     return node;
   }
 
+  onLoadingChanged(...params) {
+    // eslint-disable-next-line no-console
+    console.info("TableExportExample onLoadingChanged", ...params);
+  }
+
+  onError(...params) {
+    // eslint-disable-next-line no-console
+    console.info("TableExportExample onLoadingChanged", ...params);
+  }
+
   protected getProps(): ChartProps {
     return {
       projectId: projectId,
@@ -68,23 +80,20 @@ export class PivotTableExportExampleComponent implements OnInit {
       columns: this.columns,
       sortBy: this.sortBy,
       filters: this.filters,
-      pageSize: this.pageSize
+      pageSize: this.pageSize,
+      onExportReady: this.ExportComponent.onExportReady,
+      onLoadingChanged: this.onLoadingChanged,
+      onError: this.onError
     };
   }
 
-  private isMounted(): boolean {
-    return !!this.rootDomID;
-  }
-
   protected render() {
-    if (this.isMounted()) {
-      ReactDOM.render(React.createElement(PivotTable, this.getProps()), this.getRootDomNode());
-    }
-
+    ReactDOM.render(
+      React.createElement(PivotTable, this.getProps()), this.getRootDomNode());
   }
 
   ngOnInit() {
-    this.rootDomID = uuid.v1();
+    this.rootDomID = 'rootDomID';
   }
 
   ngOnChanges() {
@@ -93,10 +102,5 @@ export class PivotTableExportExampleComponent implements OnInit {
 
   ngAfterViewInit() {
     this.render();
-  }
-
-  ngOnDestroy() {
-    // Uncomment if Angular 4 issue that ngOnDestroy is called AFTER DOM node removal is resolved
-    // ReactDOM.unmountComponentAtNode(this.getRootDomNode())
-  }
+  }  
 }

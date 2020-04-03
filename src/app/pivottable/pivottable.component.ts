@@ -38,6 +38,7 @@ export class PivottableComponent implements OnInit, OnDestroy, OnChanges, AfterV
   columns = [
     Model.attribute(department).localIdentifier("Department")
   ]
+  
   totals = [
     {
       measureIdentifier: "AverageAmount",
