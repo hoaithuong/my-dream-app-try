@@ -30,11 +30,6 @@ export class ExampleWithSourceComponent implements OnInit {
     ({ hidden: !this.state.hidden });
   }
 
-  // propTypes: {
-  //   source: string,
-  //   for: any,
-  // };
-
   private rootDomIDSource: string;
 
   protected getRootDomNode() {

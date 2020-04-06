@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ContentChild, ElementRef, ViewChild } from '@angular/core';
 import { ExampleWithSourceComponent } from '../app/utils/example-with-source/example-with-source.component';
 import { BarchartComponent } from '../app/barchart/barchart.component';
+import BarchartComponentSRC from '!!raw-loader!../app/barchart/barchart.component';
+import * as raw from 'raw-loader';
+import  * as SD from '../app/barchart/barchart.component';
+
 import * as React from 'react';
 
 @Component({
@@ -10,8 +14,9 @@ import * as React from 'react';
 })
 
 export class AppComponent {
-  constructor(private SourceComponent: ExampleWithSourceComponent) { }
-  barchar = BarchartComponent;
+  constructor() { }
+  @ContentChild(BarchartComponent, { read: ElementRef, static: false })
+  content: ElementRef;
   source = "dsadasdsa";
   // console.log(BarchartComponent);
 

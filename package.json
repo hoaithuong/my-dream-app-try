@@ -27,6 +27,7 @@
     "downloader": "^0.1.2",
     "hero": "0.0.0",
     "invariant": "^2.2.4",
+    "moment": "^2.24.0",
     "ng-multiselect-dropdown-angular7": "^0.1.5",
     "react": "^16.12.0",
     "react-datepicker": "^2.14.1",
@@ -41,6 +42,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^9.0.0",
     "@angular-devkit/build-angular": "~0.803.20",
     "@angular/cli": "~8.3.20",
     "@angular/compiler-cli": "~8.2.14",
@@ -59,7 +61,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
-    "raw-loader": "^4.0.0",
+    "raw-loader": "^0.5.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
