@@ -54,6 +54,7 @@ import { HeadlineExportExampleComponent } from './ExportExample/headline-export-
 import { VisualizationColumnChartExportExampleComponent } from './ExportExample/visualization-column-chart-export-example/visualization-column-chart-export-example.component';
 import { ThgtestComponent } from './utils/thgtest/thgtest.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { ChartConfigurationComponent } from './chart-configuration/chart-configuration.component';
 // import { BarChartWithSourceComponent } from './SourceExamples/bar-chart-with-source/bar-chart-with-source.component';
 
 @NgModule({
@@ -108,6 +109,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     VisualizationColumnChartExportExampleComponent,
     ThgtestComponent,
     DatePickerComponent,
+    ChartConfigurationComponent,
     // BarChartWithSourceComponent
   ],
   imports: [

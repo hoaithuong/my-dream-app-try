@@ -1,4 +1,5 @@
-export const projectId = "ht3owbpk6h0yfjtkcsgva3osu3z7paol";
+// export const projectId = "ht3owbpk6h0yfjtkcsgva3osu3z7paol";
+export const projectId = "exveshu0intwbr4nk6ao8ft6vesjiqus";
 export const avgAmount = "aoJqpe5Ib4mO";
 export const avgWon = "agEEuYDOefRs";
 export const productName = "label.product.id.name";
@@ -6,7 +7,7 @@ export const department = "label.owner.department";
 export const dateClosed = "closed.dataset.dt";
 export const DepartmentDirectSales = `/gdc/md/${projectId}/obj/1026/elements?id=1226`;
 
-export const backendUrlForInfo = 'https://staging3.intgdc.com/';
+export const backendUrlForInfo = 'https://staging2.intgdc.com/';
 //export const projectId = demoProjectId;
 
 // export const averageCheckSizeByServer = "afewRzGAersh";
@@ -108,7 +109,7 @@ export const treemapVisualizationIdentifier = "aajaObFleXdD";
 export const treemapVisualizationUri = `/gdc/md/${demoProjectId}/obj/9283`;
 export const heatmapVisualizationIdentifier = "abkaJfMYiiCU";
 export const heatmapVisualizationUri = `/gdc/md/${demoProjectId}/obj/9284`;
-export const columnsVisualizationIdentifier = "aabOspdLbbvs";
+// export const columnsVisualizationIdentifier = "aabOspdLbbvs";
 export const columnVisualizationIdentifier = "acFJltTsifSQ";
 export const columnVisualizationUri = `/gdc/md/${demoProjectId}/obj/6862`;
 export const comboVisualizationIdentifier = "aaTJJW6adsaj";
@@ -155,3 +156,46 @@ export const totalCostsLocalIdentifier = "aaQHncjzfrtR";
 export const numberOfRestaurantsIdentifier = "aawAq8YqhM3o";
 export const averageRestaurantDailyCostsIdentifier = "aaQJzQzoeKwZ";
 export const employeeNameUri = `/gdc/md/${projectId}/obj/2200`;
+export const columnsVisualizationIdentifier = "aahvVUA0f7oA";
+export const CUSTOM_COLOR_PALETTE = [
+    {
+        guid: "01",
+        fill: {
+            r: 195,
+            g: 49,
+            b: 73,
+        },
+    },
+    {
+        guid: "02",
+        fill: {
+            r: 168,
+            g: 194,
+            b: 86,
+        },
+    },
+    {
+        guid: "03",
+        fill: {
+            r: 243,
+            g: 217,
+            b: 177,
+        },
+    },
+    {
+        guid: "04",
+        fill: {
+            r: 194,
+            g: 153,
+            b: 121,
+        },
+    },
+    {
+        guid: "05",
+        fill: {
+            r: 162,
+            g: 37,
+            b: 34,
+        },
+    },
+];

@@ -1,0 +1,13 @@
+<div className="s-visualization-column">
+    <button class=" s-change-palette" (click)="onPaletteChange()">
+        Change palette
+    </button>
+    <button class="s-change-legend" (click)="onLegendChange()">
+        Change legend
+    </button>
+    <button class="s-change-separator" (click)="onSeparatorChange()">
+        Change separator
+    </button>
+    <div style="height:300px" [id]="rootDomID">
+    </div>
+</div>

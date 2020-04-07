@@ -1,7 +1,7 @@
 import { Component, ContentChild, ElementRef, ViewChild } from '@angular/core';
 import { ExampleWithSourceComponent } from '../app/utils/example-with-source/example-with-source.component';
 import { BarchartComponent } from '../app/barchart/barchart.component';
-import BarchartComponentSRC from '!!raw-loader!../app/barchart/barchart.component';
+// import * as template from '../app/barchart/barchart.component.html';
 import * as raw from 'raw-loader';
 import  * as SD from '../app/barchart/barchart.component';
 
@@ -15,16 +15,14 @@ import * as React from 'react';
 
 export class AppComponent {
   constructor() { }
-  @ContentChild(BarchartComponent, { read: ElementRef, static: false })
-  content: ElementRef;
-  source = "dsadasdsa";
+  // source = BarchartComponentSRC;
   // console.log(BarchartComponent);
 
   // render(){
-    // React.createElement(ExampleWithSourceComponent, {
-    //   for: TableExample,
-    //   source: TableExampleSRC
-    // });
+  //   React.createElement(ExampleWithSourceComponent, {
+  //     for: BarchartComponent,
+  //     source: BarchartComponentSRC
+  //   });
   // }
   
   title = 'my-dream-app';

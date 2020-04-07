@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as uuid from 'uuid';
 import * as invariant from 'invariant';
+import { HttpClient } from '@angular/common/http';
 import {  
   projectId, 
   averageDailyTotalSales, 
@@ -10,6 +11,10 @@ import {
 
 import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 import { BarChart, Model } from '@gooddata/react-components';
+export {
+  default as okaidia
+} from "react-syntax-highlighter/dist/cjs/styles/prism/okaidia";
+
 
 interface ChartProps {
   measures: any[];
@@ -19,10 +24,22 @@ interface ChartProps {
 
 @Component({
   selector: 'app-bar-chart',
-  template: '<div style="height: 300px" [id]="rootDomID"></div>'
+  templateUrl: './barchart.component.html',
+  styleUrls: ['./barchart.component.css']
 })
 
 export class BarchartComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
+  // this.http.get('assets/test.txt', {responseType: 'text'})
+  //       .subscribe(data => console.log(data));
+  
+  code1 = `
+  <div [ngStyle]="{'display':'flex', 'flex-direction':'column', 'width': '100vw', 'height': '100vh'}">
+    <top-header>
+      <a class="topHeaderItem" (click)="goToHome()">Home</a>
+      <a class="topHeaderItem" (click)="gotoTOC()">Contents</a>
+    </top-header>
+  </div>
+  `
   measures = [
     Model.measure(averageDailyTotalSales).localIdentifier("averageDailyTotalSales").format("#,##0"),
     Model.measure(averageCheckSizeByServer).localIdentifier("averageCheckSizeByServer").format("#,##0")
