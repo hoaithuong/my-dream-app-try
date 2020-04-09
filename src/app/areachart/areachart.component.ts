@@ -4,9 +4,9 @@ import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 import {  
   projectId, 
-  avgAmount, 
-  avgWon, 
-  productName } from "../../../src/fixtures";
+  averageDailyTotalSales, 
+  averageCheckSizeByServer, 
+  locationStateDisplayFormIdentifier } from "../../../src/fixtures";
 
 import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 import { AreaChart, Model } from '@gooddata/react-components';
@@ -24,11 +24,11 @@ interface ChartProps {
 
 export class AreachartComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   measures = [
-    Model.measure(avgAmount).localIdentifier("AverageAmount").format("#,##0"),
-    Model.measure(avgWon).localIdentifier("AverageWon").format("#,##0")
+    Model.measure(averageDailyTotalSales).localIdentifier("AveraaverageDailyTotalSalesgeAmount").format("#,##0"),
+    Model.measure(averageCheckSizeByServer).localIdentifier("averageCheckSizeByServer").format("#,##0")
   ]
   viewBy = [
-    Model.attribute(productName).localIdentifier("ProductName")
+    Model.attribute(locationStateDisplayFormIdentifier).localIdentifier("locationStateDisplayFormIdentifier")
   ]
  
   private rootDomID: string;

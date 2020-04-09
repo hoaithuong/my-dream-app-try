@@ -32,14 +32,6 @@ export class BarchartComponent implements OnInit, OnDestroy, OnChanges, AfterVie
   // this.http.get('assets/test.txt', {responseType: 'text'})
   //       .subscribe(data => console.log(data));
   
-  code1 = `
-  <div [ngStyle]="{'display':'flex', 'flex-direction':'column', 'width': '100vw', 'height': '100vh'}">
-    <top-header>
-      <a class="topHeaderItem" (click)="goToHome()">Home</a>
-      <a class="topHeaderItem" (click)="gotoTOC()">Contents</a>
-    </top-header>
-  </div>
-  `
   measures = [
     Model.measure(averageDailyTotalSales).localIdentifier("averageDailyTotalSales").format("#,##0"),
     Model.measure(averageCheckSizeByServer).localIdentifier("averageCheckSizeByServer").format("#,##0")

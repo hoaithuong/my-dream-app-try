@@ -4,11 +4,13 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import * as invariant from 'invariant';
 import * as ReactDOM from 'react-dom';
-// import { HttpClient } from '@angular/common/http';
+import * as uuid from 'uuid';
+
+let self: any;
 
 @Component({
   selector: 'app-example-with-source',
-  template: '<div [id]="rootDomIDSource"></div>'
+  templateUrl: './example-with-source.component.html'
 })
 
 @Injectable({
@@ -16,24 +18,18 @@ import * as ReactDOM from 'react-dom';
 })
 
 export class ExampleWithSourceComponent implements OnInit {
-  
-  // @Input() source: string;
-  // @Input() for: any;
-  propTypes: {
-    source: string,
-    for: any,
-  };
-
-  constructor() {
-    this.toggle = this.toggle.bind(this);
-  }
+  @Input() ts: string;
+  @Input() html: string;
+  @Input() css: string;
+  @Input() for: any;
 
   state = { 
     hidden: true 
   };
 
   toggle() {
-    ({ hidden: !this.state.hidden });
+    self.state.hidden = !self.state.hidden;
+    self.render();
   }
 
   private rootDomIDSource: string;
@@ -46,9 +42,10 @@ export class ExampleWithSourceComponent implements OnInit {
 
   render(){
     var hidden = this.state.hidden;
-    var Component = this.propTypes.for;
+    var Component = this.for;
+
     var iconClassName = hidden ? "icon-navigatedown" : "icon-navigateup";
-    
+
     ReactDOM.render(
       React.createElement(
         "div",
@@ -56,18 +53,11 @@ export class ExampleWithSourceComponent implements OnInit {
           className: "example-with-source"
         },
         React.createElement(
-          "style",
-          {
-            jsx: true
-          },
-          "\n                    .example-with-source {\n                        flex: 1 0 auto;\n                        display: flex;\n                        flex-direction: column;\n                        justify-content: flex-start;\n                        align-items: stretch;\n                        margin-top: 30px;\n                    }\n\n                    .example {\n                        padding: 20px;\n                        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);\n                        background-color: white;\n                    }\n\n                    .source {\n                        margin: 20px 0;\n                    }\n\n                    :global(pre) {\n                        overflow: auto;\n                    }\n                "
-        ),
-        React.createElement(
           "div",
           {
             className: "example"
           },
-          React.createElement(Component, null)
+          // React.createElement(Component, null)
         ),
         React.createElement(
           "div",
@@ -86,25 +76,62 @@ export class ExampleWithSourceComponent implements OnInit {
           ),
           hidden
             ? ""
-            : React.createElement(
-              SyntaxHighlighter,
-              {
-                language: "ts",
-                style: okaidia
-              },
-              this.propTypes.source
+            : 
+            React.createElement(
+              "mat-tab-group",
+              null,
+              React.createElement(
+                "mat-tab",
+                {
+                  label: "TS"
+                },
+                React.createElement(
+                  SyntaxHighlighter,
+                  {
+                    language: "jsx",
+                    style: okaidia
+                  },
+                  this.ts
+                )
+              ),
+              React.createElement(
+                "mat-tab",
+                {
+                  label: "HTML"
+                },
+                React.createElement(
+                  SyntaxHighlighter,
+                  {
+                    language: "jsx",
+                    style: okaidia
+                  },
+                  this.html
+                )
+              ),
+              React.createElement(
+                "mat-tab",
+                {
+                  label: "CSS"
+                },
+                React.createElement(
+                  SyntaxHighlighter,
+                  {
+                    language: "css",
+                    style: okaidia
+                  },
+                  this.css
+                )
+              )
             )
         )
+
       ), this.getRootDomNode());
   }
 
   ngOnInit() {
-    this.rootDomIDSource = 'rootDomIDSource';
+    self = this;
+    this.rootDomIDSource = uuid.v4();
   }
-
-  // ngOnChanges() {
-  //   this.render();
-  // }
 
   ngAfterViewInit() {
     this.render();

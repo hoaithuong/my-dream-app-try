@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown-angular7';
 import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ import { VisualizationColumnChartExportExampleComponent } from './ExportExample/
 import { ThgtestComponent } from './utils/thgtest/thgtest.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { ChartConfigurationComponent } from './chart-configuration/chart-configuration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { BarChartWithSourceComponent } from './SourceExamples/bar-chart-with-source/bar-chart-with-source.component';
 
 @NgModule({
@@ -110,13 +112,16 @@ import { ChartConfigurationComponent } from './chart-configuration/chart-configu
     ThgtestComponent,
     DatePickerComponent,
     ChartConfigurationComponent,
+    
     // BarChartWithSourceComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

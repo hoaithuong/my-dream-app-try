@@ -1,11 +1,11 @@
 import { Component, ContentChild, ElementRef, ViewChild } from '@angular/core';
-import { ExampleWithSourceComponent } from '../app/utils/example-with-source/example-with-source.component';
+// import { ExampleWithSourceComponent } from '../app/utils/example-with-source/example-with-source.component';
 import { BarchartComponent } from '../app/barchart/barchart.component';
-// import * as template from '../app/barchart/barchart.component.html';
-import * as raw from 'raw-loader';
-import  * as SD from '../app/barchart/barchart.component';
+import { AreachartComponent } from '../app/areachart/areachart.component';
+import BarchartComponentSRCHtml from '!!raw-loader!../app/barchart/barchart.component.html';
+import BarchartComponentSRCTs from '!!raw-loader!../app/barchart/barchart.component.ts';
+import BarchartComponentSRCCss from '!!raw-loader!../app/barchart/barchart.component.css';
 
-import * as React from 'react';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +15,10 @@ import * as React from 'react';
 
 export class AppComponent {
   constructor() { }
-  // source = BarchartComponentSRC;
-  // console.log(BarchartComponent);
-
-  // render(){
-  //   React.createElement(ExampleWithSourceComponent, {
-  //     for: BarchartComponent,
-  //     source: BarchartComponentSRC
-  //   });
-  // }
+  html = BarchartComponentSRCHtml;
+  ts = BarchartComponentSRCTs;
+  css = "BarchartComponentSRCCss";
+  for = BarchartComponent;
   
   title = 'my-dream-app';
 }
